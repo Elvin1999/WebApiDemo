@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApiDemo.DataAccess;
 using WebApiDemo.Entities;
@@ -18,6 +19,7 @@ namespace WebApiDemo.Controllers
         }
 
         [HttpGet("")]
+        [Authorize(Roles ="Editor")]
         public IActionResult Get()
         {
             var products = _productDal.GetList();
